@@ -12,14 +12,29 @@ import organizador.partidos.jugador.Postulante
 import organizador.partidos.observer.NuevoInscriptoObserver
 import organizador.partidos.observer.PartidoConfirmadoObserver
 import java.io.Serializable
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.OneToMany
+import javax.persistence.CascadeType
+import javax.persistence.Entity
+import org.uqbar.commons.utils.Observable
 
+@Entity
+@Observable
 class Partido implements Serializable{
+	
+	@Id
+	@GeneratedValue
+	@Property Integer id
 
 	var String fecha //'20/05/14'
 	var String lugar
 	var String horario //'07:00pm'
 	@Property Infraccion infraccion
+	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="partido")
 	@Property List<Jugador> inscriptos = new ArrayList
+	
 	String turno //"M" "T" "N"
 	@Property Date fechaDelPartido //preguntar como se usa esta clase
 	@Property List<PartidoConfirmadoObserver> partidoConfirmadoObserver
