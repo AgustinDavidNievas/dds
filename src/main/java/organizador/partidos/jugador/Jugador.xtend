@@ -27,6 +27,10 @@ class Jugador extends Entity {
 	@Property int promedioDeUltimoPartido = 0
 	@Property int promedioDeTodosLosPartidos = 0
 	@Property List<Infraccion> infracciones
+	
+	new(){
+		super()
+	}
 
 	new(String nombre, Tipo tipo, int edad) {
 		this.nombre = nombre
@@ -53,6 +57,22 @@ class Jugador extends Entity {
 		this.infracciones = newArrayList
 	}
 	/***********************************************************************************************************************************************/
+	
+	new(String nombre, Tipo tipo, int edad, String apodo, Integer handicap, List<Integer> listaDeCalificaciones){
+		//este new esta para simplificar la carga de datos del home
+		this.nombre = nombre
+		this.peso = 100
+		this.tipo = tipo
+		this.edad = edad
+		this.tipo.setJugador(this)
+		this.inicializarAmigos
+		this.inicializarListaDeCalificaciones
+		this.apodo = apodo
+		this.infracciones = newArrayList
+		this.handicap = handicap
+		this.listaDeCalificaciones = listaDeCalificaciones
+	}
+	
 	def asignarApodo(String apodo){
 		
 		this.apodo = apodo

@@ -6,24 +6,58 @@ import organizador.partidos.jugador.Estandar
 import organizador.partidos.jugador.Jugador
 import organizador.partidos.jugador.Tipo
 import java.util.Date
+import java.util.List
 
 class HomeDeJugadores extends CollectionBasedHome<Jugador> {
 	
 
 	def void init() {
-
-		this.create("Gabriel",new Estandar,20,"Gabi")
-		this.create("Juan",new Estandar,30,"Roman")
-		this.create("Ramon",new Estandar,25,"X")
-		this.create("PechinioFrio",new Estandar,35,"Romaldinio")
-		this.create("Lucas",new Estandar,15,"Lu")
-		this.create("Oscar",new Estandar,40,"Pocho")
-		this.create("Facundo",new Estandar,5,"miau")
-		this.create("Gonzalo",new Estandar,50,"Gon")
+		
+		val listaDeCalificacionesDeHugo = newArrayList
+		listaDeCalificacionesDeHugo.add(9)
+		this.create("Hugo", new Estandar, 40, "koku",8,listaDeCalificacionesDeHugo)
+		
+		val listaDeCalificacionesDeGaby = newArrayList
+		listaDeCalificacionesDeGaby.add(10)
+		listaDeCalificacionesDeGaby.add(5)
+		this.create("Gaby", new Estandar, 30, "Ga",6,listaDeCalificacionesDeGaby)
+		
+		val listaDeCalificacionesDeRo = newArrayList
+		listaDeCalificacionesDeRo.add(3)
+		listaDeCalificacionesDeRo.add(7)
+		this.create("Rodry", new Estandar, 20, "Ro",7,listaDeCalificacionesDeRo)
+		
+		val listaDeCalificacionesDeIvan = newArrayList
+		listaDeCalificacionesDeIvan.add(1)
+		this.create("Ivan", new Estandar, 22, "Ivu",2,listaDeCalificacionesDeIvan)
+		
+		val listaDeCalificacionesDeQui = newArrayList
+		listaDeCalificacionesDeQui.add(5)
+		this.create("Quique", new Estandar, 27, "Qui",1,listaDeCalificacionesDeQui)
+		
+		val listaDeCalificacionesDeDani = newArrayList
+		listaDeCalificacionesDeDani.add(7)
+		this.create("Daniel", new Estandar, 31, "Dani",6,listaDeCalificacionesDeDani)
+		
+		val listaDeCalificacionesDePo = newArrayList
+		listaDeCalificacionesDePo.add(2)
+		this.create("Po", new Estandar, 2, "P",3,listaDeCalificacionesDePo)
+		
+		val listaDeCalificacionesDeIru = newArrayList
+		listaDeCalificacionesDeIru.add(10)
+		this.create("Iroito", new Estandar, 100, "Iru", 10,listaDeCalificacionesDeIru)
+		
+		val listaDeCalificacionesDeCu = newArrayList
+		listaDeCalificacionesDeCu.add(10)
+		this.create("Cuirassier", new Estandar, 28, "Cu",9,listaDeCalificacionesDeCu)
+		
+		val listaDeCalificacionesDeCarla = newArrayList
+		listaDeCalificacionesDeCarla.add(7)
+		this.create("Carla", new Estandar, 14, "La Carla",3,listaDeCalificacionesDeCarla)
 	}
 
-	def create(String pNombre, Tipo tipo, int edad, String apodo) {
-		var jugador = new Jugador(pNombre, tipo, edad, apodo)
+	def create(String pNombre, Tipo tipo, int edad, String apodo, Integer handicap, List<Integer> calificaciones) {
+		var jugador = new Jugador(pNombre, tipo, edad, apodo, handicap, calificaciones)
 		this.create(jugador)
 		return jugador
 	}
