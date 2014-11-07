@@ -11,7 +11,9 @@ import organizador.partidos.jugador.Infracciones.Infraccion
 import java.io.Serializable
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import org.uqbar.commons.utils.Observable
 
+@Observable
 class Jugador extends Entity implements Serializable{
 	
 	@Id
