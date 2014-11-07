@@ -8,8 +8,15 @@ import java.util.Date
 import organizador.partidos.criterios.UltimasCalificaciones
 import organizador.partidos.criterios.CriterioPromedioNCalificaciones
 import organizador.partidos.jugador.Infracciones.Infraccion
+import java.io.Serializable
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
-class Jugador extends Entity {
+class Jugador extends Entity implements Serializable{
+	
+	@Id
+	@GeneratedValue
+	@Property Integer id //si le pongo long me tira error en los xtend-gen
 
 	@Property String nombre
 	@Property String correo
@@ -29,6 +36,7 @@ class Jugador extends Entity {
 	@Property List<Infraccion> infracciones
 	
 	new(){
+		//lo necesita hibernate
 		super()
 	}
 
