@@ -56,6 +56,7 @@ CREATE TABLE `TL_Jugador`(
 `Promedio_Ultimo_Partido` INT,
 `Promedio_Todos_Partidos` INT,
 `Partidos_Jugados` INT,
+`Numero_de_Equipo` INT DEFAULT NULL,
 PRIMARY KEY (`ID_Jugador`),
 FOREIGN KEY (`ID_Tipo`) REFERENCES `TL_Tipo` (`ID_Tipo`),
 FOREIGN KEY (`Partido_a_Jugar`) REFERENCES `TL_Partido` (`ID_Partido`)
