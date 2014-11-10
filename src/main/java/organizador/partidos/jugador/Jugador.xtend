@@ -12,6 +12,7 @@ import java.io.Serializable
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import org.uqbar.commons.utils.Observable
+import javax.persistence.OneToOne
 
 @Observable
 class Jugador extends Entity implements Serializable{
@@ -98,6 +99,7 @@ class Jugador extends Entity implements Serializable{
 		this.calificacionesDelUltimoPartido = newArrayList
 	}
 	
+	@OneToOne
 	def getTipo() {
 		this.tipo
 	}

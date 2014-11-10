@@ -1,9 +1,14 @@
 package organizador.partidos.jugador
 
-import organizador.partidos.partido.Partido
+import organizador.partidos.partido.Partidoimport javax.persistence.Id
+import javax.persistence.GeneratedValue
 
 class Estandar implements Tipo {
-
+	
+	@Id
+	@GeneratedValue
+	@Property Integer id
+	
 	int prioridad = 1
 
 	override def dameTuPrioridad() {
