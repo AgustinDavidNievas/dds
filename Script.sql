@@ -67,5 +67,15 @@ FOREIGN KEY (`Partido_a_Jugar`) REFERENCES `TL_Partido` (`ID_Partido`)
 
 LOCK TABLES `TL_Jugador` WRITE;
 INSERT INTO `TL_Jugador` (`ID_Jugador`, `ID_Tipo`, `Partido_a_Jugar`, `Apodo`, `Nombre`, `Apellido`, 
-						`Peso`, `Correo`, `Edad`, `Handicap`, `Promedio_Ultimo_Partido`, `Promedio_Todos_Partidos` ,`Partidos_Jugados` )VALUES (1, 1, 1, 'Tito', 'Roberto', 'Gomez', 20, 'titogom@gmail.com', 21, 80, 21, 21, 3);
+						`Peso`, `Correo`, `Edad`, `Handicap`, `Promedio_Ultimo_Partido`, `Promedio_Todos_Partidos` ,`Partidos_Jugados` )VALUES 
+										(1, 1, 1, 'Tito', 'Roberto', 'Gomez', 20, 'titogom@gmail.com', 21, 80, 21, 21, 3),
+										(2, 1, 1, 'Jor', 'Jorge', 'Gomez', 20, 'jorgom@gmail.com', 21, 80, 21, 21, 3),
+										(3, 1, 1, 'Juancho', 'Juan', 'Gonzalez', 20, 'juangon@gmail.com', 21, 80, 21, 21, 3), (1, 1, 1, 'Pepe', 'Pedro', 'charaez', 20, 'peterchar@gmail.com', 21, 80, 21, 21, 3),
+										(4, 1, 1, 'Pepito', 'Pedro', 'Trepin', 20, 'Petre@gmail.com', 21, 80, 21, 21, 3),
+										(5, 1, 1, 'Elsa', 'Ernesto', 'Saragosa', 20, 'ernesa@gmail.com', 21, 80, 21, 21, 3),
+										(6, 1, 1, 'Pipo', 'Pingacho', 'Kirin', 20, 'pipokirin@gmail.com', 21, 80, 21, 21, 3),
+										(7, 1, 1, 'Sebas', 'Sebastian', 'Caripela', 20, 'sebacar@gmail.com', 21, 80, 21, 21, 3),
+										(8, 1, 1, 'Pepito', 'Pedro', 'Trepin', 20, 'Petre@gmail.com', 21, 80, 21, 21, 3),
+										(9, 1, 1, 'Elsa', 'Ernesto', 'Saragosa', 20, 'ernesa@gmail.com', 21, 80, 21, 21, 3),
+										(10, 1, 1, 'Pipo', 'Pingacho', 'Kirin', 20, 'pipokirin@gmail.com', 21, 80, 21, 21, 3),;
 UNLOCK TABLES;						
