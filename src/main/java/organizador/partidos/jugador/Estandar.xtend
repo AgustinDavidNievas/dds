@@ -10,7 +10,8 @@ class Estandar implements Tipo {
 	@Property Integer id
 	
 	int prioridad = 1
-
+	
+	
 	override def dameTuPrioridad() {
 		this.prioridad
 	}
@@ -30,5 +31,10 @@ class Estandar implements Tipo {
 				partido.agregar(this.jugador)
 			}
 		}
+	}
+	
+	new(){
+		//lo necesita hibernate
+		super()
 	}
 }
