@@ -45,7 +45,11 @@ class Partido implements Serializable{
 	@Property Mail mailAvisoAlAdmin
 	@Property Mail mailAvisoJugadores
 	@Property EnviadorDeMails enviadorDeMails
+	
+	@OneToMany
 	@Property List<Jugador> equipo1
+	
+	@OneToMany
 	@Property List<Jugador> equipo2
 
 	/*Inicializacion */
