@@ -7,6 +7,8 @@ import organizador.partidos.jugador.Jugador
 import organizador.partidos.jugador.Tipo
 import java.util.Date
 import java.util.List
+import static organizador.persistencia.SessionManager.*
+import static org.hibernate.criterion.Restrictions.*
 
 class HomeDeJugadores extends CollectionBasedHome<Jugador> {
 	
@@ -104,5 +106,22 @@ class HomeDeJugadores extends CollectionBasedHome<Jugador> {
 	def search(String nombre, String apodo, Date fecha) {
 		allInstances.filter[jugador|this.match(nombre, jugador.getNombre) && this.match(apodo, jugador.getApodo) && this.match(fecha, jugador.fechaDeNacimiento)].toList
 	}
+	
+/*def List<Jugador> filtrar(String nombre, String apellido, Integer peso, Integer edad, Integer handicap) {
+		val query = session.createCriteria(Jugador)
+
+		if (nombre != null) {
+			query.add(like("nombre", "%" + nombre + "%"))
+		}
+		if (apellido != null) {
+			query.add(like("apellido", "%" + apellido + "%"))
+		}
+		if (edad != null) {
+			query.add(eq("edad", edad))
+		}
+		
+		
+		query.list()
+	}*/
 	
 }

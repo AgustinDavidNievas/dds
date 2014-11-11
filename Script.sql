@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS `TL_Jugador`;
 DROP TABLE IF EXISTS `TL_Partido`;
 
 CREATE TABLE `TL_Tipo`(
-	`ID_Tipo` NUMERIC(18,0) NOT NULL AUTO_INCREMENT,
+	`ID_Tipo` int NOT NULL AUTO_INCREMENT,
 	`Prioridad` int,
 	`Descripcion` nvarchar(65),
 	PRIMARY KEY (`ID_Tipo`)
@@ -13,19 +13,19 @@ CREATE TABLE `TL_Tipo`(
 
 LOCK TABLES `TL_Tipo` WRITE;
 INSERT INTO `TL_Tipo` (ID_Tipo)
-VALUES (“1”), (“2”), (“3”);
+VALUES (1), (2), (3);
 
 INSERT INTO `TL_Tipo` (Prioridad)
-VALUES (“1”), (“2”), (“3”);
+VALUES (1), (2), (3);
 
 INSERT INTO `TL_Tipo` (Descripcion)
-VALUES (“Estandar”), (“Solidario”), (“Condicional”);
+VALUES ('Estandar'), ('Solidario'), ('Condicional');
 
 UNLOCK TABLES;
 
 
 CREATE TABLE TL_Partido(
-    `ID_Partido` NUMERIC(18,0) NOT NULL AUTO_INCREMENT,
+    `ID_Partido` int NOT NULL AUTO_INCREMENT,
     `Fecha` datetime,
     `Lugar` NVARCHAR(64),
     `Hora` datetime,
@@ -42,9 +42,9 @@ UNLOCK TABLES;
 
 
 CREATE TABLE `TL_Jugador`(
-`ID_Jugador` NUMERIC(18,0) NOT NULL AUTO_INCREMENT,,
-`ID_Tipo` NUMERIC(18,0) NOT NULL,
-`Partido_a_Jugar` NUMERIC(18,0),
+`ID_Jugador` int NOT NULL AUTO_INCREMENT,,
+`ID_Tipo` int NOT NULL, -- Pide que se debe lockear o algo asi
+`Partido_a_Jugar` int,
 `Apodo` NVARCHAR(55),
 `Nombre` NVARCHAR(55),
 `Apellido` NVARCHAR(55),
