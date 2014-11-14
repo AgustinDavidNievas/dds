@@ -6,7 +6,7 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         
-        <property name="hibernate.connection.url">jdbc:mysql://localhost/Partido</property>
+        <property name="hibernate.connection.url">jdbc:hsql://localhost/Partido</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password"></property>
 
