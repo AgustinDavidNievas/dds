@@ -4,27 +4,16 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import organizador.partidos.partido.Partido
+import javax.persistence.DiscriminatorValue
 
 @Entity
-class CondicionEdad implements Condicion {
+@DiscriminatorValue("E")
+class CondicionEdad extends Condicion {
 
 @Property int edadMaxima
 @Property int edadMinima
 	
-	Integer id
-			
-	@Id
-	@GeneratedValue
-	override getId() {
-		this.id
-	}
-	@Id
-	@GeneratedValue
-	override setId(Integer idWacho) {
-		this.id = idWacho
-	}
 	
-
 	override puedeInscribirse(Partido partido) {
 		
 	partido.inscriptos.forall[jugadores | jugadores.edad > this.edadMinima && jugadores.edad < this.edadMaxima] 

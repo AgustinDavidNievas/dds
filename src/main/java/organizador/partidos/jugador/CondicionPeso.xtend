@@ -4,25 +4,13 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import organizador.partidos.partido.Partido
+import javax.persistence.DiscriminatorValue
 
 @Entity
-class CondicionPeso implements Condicion {
+@DiscriminatorValue("P")
+class CondicionPeso extends Condicion {
 	@Property int peso
 	
-	Integer id
-
-	@Id
-	@GeneratedValue
-	override getId() {
-		this.id
-	}
-
-	@Id
-	@GeneratedValue
-	override setId(Integer idWacho) {
-		this.id = idWacho
-	}
-
 	override puedeInscribirse(Partido partido) {
 
 		partido.inscriptos.forall[jugadores|jugadores.peso >= this.peso]

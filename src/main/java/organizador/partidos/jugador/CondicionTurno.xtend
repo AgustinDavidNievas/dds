@@ -4,25 +4,13 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import organizador.partidos.partido.Partido
+import javax.persistence.DiscriminatorValue
 
 @Entity
-class CondicionTurno implements Condicion {
+@DiscriminatorValue("T")
+class CondicionTurno extends Condicion {
 
 	@Property String turno
-	
-	Integer id
-
-	@Id
-	@GeneratedValue
-	override getId() {
-		this.id
-	}
-
-	@Id
-	@GeneratedValue
-	override setId(Integer idWacho) {
-		this.id = idWacho
-	}
 
 	override puedeInscribirse(Partido partido) {
 
@@ -33,6 +21,5 @@ class CondicionTurno implements Condicion {
 	new(String turno) {
 		this.turno = turno
 	}
-	
-	
+
 }

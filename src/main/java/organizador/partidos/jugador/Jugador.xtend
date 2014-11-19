@@ -2,16 +2,11 @@ package organizador.partidos.jugador
 
 import java.io.Serializable
 import java.util.ArrayList
-import javax.persistence.Column
 import javax.persistence.ElementCollection
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
-import javax.persistence.JoinColumn
 import javax.persistence.OneToMany
-import org.hibernate.annotations.Any
-import org.hibernate.annotations.AnyMetaDef
-import org.hibernate.annotations.MetaValue
 import org.uqbar.commons.utils.Observable
 import organizador.partidos.criterios.CriterioPromedioNCalificaciones
 import organizador.partidos.criterios.UltimasCalificaciones
@@ -21,6 +16,11 @@ import organizador.partidos.partido.Partido
 import java.util.List
 import java.util.Date
 import javax.persistence.ManyToOne
+import javax.persistence.Column
+import org.hibernate.annotations.AnyMetaDef
+import org.hibernate.annotations.MetaValue
+import org.hibernate.annotations.ManyToAny
+import org.hibernate.annotations.Any
 import javax.persistence.OneToOne
 
 @Entity
@@ -33,14 +33,15 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 
 	@Property String nombre
 	@Property String correo
+	
+	@OneToOne
 	Tipo tipo
+	
 	@Property int peso
 	@Property int edad
 	
-	@Any(metaColumn = @Column(name="tipoCondicion"))
-	//@AnyMetaDef() googlear un ejemplo de esto :(
-	@JoinColumn(name = 'condicion')
-	@Property Condicion condicion
+	@ManyToOne
+    @Property Condicion condicion
 	
 	@OneToMany
 	@Property List<Jugador> amigos = new ArrayList
@@ -127,7 +128,8 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 		this.calificacionesDelUltimoPartido = newArrayList
 	}
 	
-	@OneToOne
+	
+	//@OneToOne
 	def getTipo() {
 		this.tipo
 	}

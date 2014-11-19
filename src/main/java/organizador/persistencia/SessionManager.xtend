@@ -9,6 +9,9 @@ import organizador.partidos.jugador.CondicionTurno
 import organizador.partidos.jugador.Infracciones.InfraccionSeDaDeBajaSinRemplazante
 import organizador.partidos.jugador.Jugador
 import organizador.partidos.partido.Partido
+import organizador.partidos.jugador.Solidario
+import organizador.partidos.jugador.Estandar
+import organizador.partidos.jugador.Condicional
 
 class SessionManager {
 	
@@ -43,6 +46,9 @@ class SessionManager {
 		cfg.addAnnotatedClass(CondicionPeso)
 		cfg.addAnnotatedClass(CondicionEdad)
 		cfg.addAnnotatedClass(CondicionTurno)
+		cfg.addAnnotatedClass(Solidario)
+		cfg.addAnnotatedClass(Estandar)
+		cfg.addAnnotatedClass(Condicional)
 	}
 	
 	def static startApplication(){

@@ -1,11 +1,20 @@
 package organizador.partidos.jugador
 
-import organizador.partidos.partido.Partido
+import javax.persistence.DiscriminatorValue
+import javax.persistence.Entity
+import javax.persistence.OneToOne
 import organizador.partido.excepciones.EstaCompletoException
 import organizador.partido.excepciones.NoCumpleCondicionParaInscribirseException
+import organizador.partidos.partido.Partido
 
-class Condicional implements Tipo {
-
+@Entity
+@DiscriminatorValue("C")
+class Condicional extends Tipo {
+	
+	
+	@OneToOne
+	@Property Jugador jugador2
+	
 	int prioridad = 3
 
 	override def dameTuPrioridad() {

@@ -1,9 +1,17 @@
 package organizador.partidos.jugador
 
+import javax.persistence.DiscriminatorValue
+import javax.persistence.Entity
+import javax.persistence.OneToOne
 import organizador.partidos.partido.Partido
 
-class Solidario implements Tipo {
-
+@Entity
+@DiscriminatorValue("S")
+class Solidario extends Tipo {
+	
+	@OneToOne
+	@Property Jugador jugador2
+	
 	int prioridad = 2
 
 	override def dameTuPrioridad() {

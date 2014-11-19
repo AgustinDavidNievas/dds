@@ -1,14 +1,17 @@
 package organizador.partidos.jugador
 
-import organizador.partidos.partido.Partidoimport javax.persistence.Id
-import javax.persistence.GeneratedValue
+import javax.persistence.DiscriminatorValue
+import javax.persistence.Entity
+import javax.persistence.OneToOne
+import organizador.partidos.partido.Partido
 
-class Estandar implements Tipo {
+@Entity
+@DiscriminatorValue("E")
+class Estandar extends Tipo {
 	
-	@Id
-	@GeneratedValue
-	@Property Integer id
-	
+	@OneToOne
+	@Property Jugador jugador2
+		
 	int prioridad = 1
 	
 	
