@@ -1,11 +1,29 @@
 package organizador.partidos.jugador
 
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 import organizador.partidos.partido.Partido
 
+@Entity
 class CondicionEdad implements Condicion {
 
 @Property int edadMaxima
 @Property int edadMinima
+	
+	Integer id
+			
+	@Id
+	@GeneratedValue
+	override getId() {
+		this.id
+	}
+	@Id
+	@GeneratedValue
+	override setId(Integer idWacho) {
+		this.id = idWacho
+	}
+	
 
 	override puedeInscribirse(Partido partido) {
 		
@@ -18,6 +36,8 @@ new(int edadMinima, int edadMaxima){
 	this.edadMaxima = edadMaxima
 	this.edadMinima = edadMinima
 }
-
+	
+	
+	
 	
 }

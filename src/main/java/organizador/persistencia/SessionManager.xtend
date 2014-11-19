@@ -3,8 +3,12 @@ package organizador.persistencia
 import org.hibernate.Session
 import org.hibernate.SessionFactory
 import org.hibernate.cfg.Configuration
-import organizador.partidos.partido.Partido
+import organizador.partidos.jugador.CondicionEdad
+import organizador.partidos.jugador.CondicionPeso
+import organizador.partidos.jugador.CondicionTurno
+import organizador.partidos.jugador.Infracciones.InfraccionSeDaDeBajaSinRemplazante
 import organizador.partidos.jugador.Jugador
+import organizador.partidos.partido.Partido
 
 class SessionManager {
 	
@@ -35,6 +39,10 @@ class SessionManager {
 	def static addClasses(Configuration cfg) {
 		cfg.addAnnotatedClass(Jugador)
 		cfg.addAnnotatedClass(Partido)
+		cfg.addAnnotatedClass(InfraccionSeDaDeBajaSinRemplazante)
+		cfg.addAnnotatedClass(CondicionPeso)
+		cfg.addAnnotatedClass(CondicionEdad)
+		cfg.addAnnotatedClass(CondicionTurno)
 	}
 	
 	def static startApplication(){

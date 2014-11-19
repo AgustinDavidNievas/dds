@@ -33,7 +33,7 @@ class Partido extends org.uqbar.commons.model.Entity implements Serializable{
 	var String horario //'07:00pm'
 	@Property Infraccion infraccion
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="partido")
+	@OneToMany//(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="partido")
 	@Property List<Jugador> inscriptos = new ArrayList
 	
 	String turno //"M" "T" "N"

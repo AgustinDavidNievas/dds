@@ -1,18 +1,27 @@
 package organizador.partidos.jugador
 
-import java.util.ArrayList
-import java.util.List
-import organizador.partidos.partido.Partido
-import java.util.Date
-import organizador.partidos.criterios.UltimasCalificaciones
-import organizador.partidos.criterios.CriterioPromedioNCalificaciones
-import organizador.partidos.jugador.Infracciones.Infraccion
 import java.io.Serializable
+import java.util.ArrayList
+import javax.persistence.Column
+import javax.persistence.ElementCollection
+import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.OneToMany
+import org.hibernate.annotations.Any
+import org.hibernate.annotations.AnyMetaDef
+import org.hibernate.annotations.MetaValue
 import org.uqbar.commons.utils.Observable
+import organizador.partidos.criterios.CriterioPromedioNCalificaciones
+import organizador.partidos.criterios.UltimasCalificaciones
+import organizador.partidos.jugador.Infracciones.Infraccion
+import organizador.partidos.jugador.Infracciones.InfraccionSeDaDeBajaSinRemplazante
+import organizador.partidos.partido.Partido
+import java.util.List
+import java.util.Date
+import javax.persistence.ManyToOne
 import javax.persistence.OneToOne
-import javax.persistence.Entity
 
 @Entity
 @Observable
@@ -27,17 +36,35 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 	Tipo tipo
 	@Property int peso
 	@Property int edad
+	
+	@Any(metaColumn = @Column(name="tipoCondicion"))
+	//@AnyMetaDef() googlear un ejemplo de esto :(
+	@JoinColumn(name = 'condicion')
 	@Property Condicion condicion
+	
+	@OneToMany
 	@Property List<Jugador> amigos = new ArrayList
+	
+	@ElementCollection
 	@Property List<Integer> listaDeCalificaciones
+	
 	@Property Integer handicap	
+	
+	
+	@ElementCollection
 	@Property List<Integer> calificacionesDelUltimoPartido
+	
 	@Property String apodo
 	@Property Date fechaDeNacimiento = new Date(1,1,1)
 	@Property int partidosJugados = 1
 	@Property int promedioDeUltimoPartido = 0
 	@Property int promedioDeTodosLosPartidos = 0
-	@Property List<Infraccion> infracciones
+	
+	@OneToMany(targetEntity=InfraccionSeDaDeBajaSinRemplazante)
+	@Property List<Infraccion> infracciones //rompe porque es una Interfaz, preguntar a Lucas
+	
+	@ManyToOne
+	@Property Partido partido
 	
 	new(){
 		//lo necesita hibernate
@@ -204,8 +231,8 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 		
 	}
 	
-	def agregarInfraccion(Infraccion infraccion){
-		
+	def agregarInfraccion(InfraccionSeDaDeBajaSinRemplazante infraccion){
+							//Aca iba Infraccion
 		this.infracciones.add(infraccion)
 	}
 }
