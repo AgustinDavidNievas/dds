@@ -3,7 +3,6 @@ package organizador.partidos.jugador
 import java.util.ArrayList
 import java.util.List
 import organizador.partidos.partido.Partido
-import org.uqbar.commons.model.Entity
 import java.util.Date
 import organizador.partidos.criterios.UltimasCalificaciones
 import organizador.partidos.criterios.CriterioPromedioNCalificaciones
@@ -13,9 +12,11 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import org.uqbar.commons.utils.Observable
 import javax.persistence.OneToOne
+import javax.persistence.Entity
 
+@Entity
 @Observable
-class Jugador extends Entity implements Serializable{
+class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 	
 	@Id
 	@GeneratedValue

@@ -16,13 +16,13 @@ import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.OneToMany
 import javax.persistence.CascadeType
-//import javax.persistence.Entity        preguntarle esto a Lucas
-import org.uqbar.commons.model.Entity
+import javax.persistence.Entity        //preguntarle esto a Lucas
+//import org.uqbar.commons.model.Entity
 import org.uqbar.commons.utils.Observable
 
-//@Entity
+@Entity
 @Observable
-class Partido extends Entity implements Serializable{
+class Partido extends org.uqbar.commons.model.Entity implements Serializable{
 	
 	@Id
 	@GeneratedValue
