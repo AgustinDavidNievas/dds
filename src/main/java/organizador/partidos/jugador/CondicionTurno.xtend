@@ -21,5 +21,9 @@ class CondicionTurno extends Condicion {
 	new(String turno) {
 		this.turno = turno
 	}
-
+	
+	new(){
+		//lo necesita hibernate
+		super()
+	}
 }

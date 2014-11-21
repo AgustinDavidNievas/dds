@@ -9,8 +9,9 @@ import javax.persistence.DiscriminatorValue
 @Entity
 @DiscriminatorValue("P")
 class CondicionPeso extends Condicion {
+
 	@Property int peso
-	
+
 	override puedeInscribirse(Partido partido) {
 
 		partido.inscriptos.forall[jugadores|jugadores.peso >= this.peso]
@@ -21,6 +22,11 @@ class CondicionPeso extends Condicion {
 
 		this.peso = peso
 	}
-	
-	
+
+	new() {
+
+		//lo necesita hibernate
+		super()
+	}
+
 }

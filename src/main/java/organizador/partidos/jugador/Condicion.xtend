@@ -10,13 +10,14 @@ import javax.persistence.Id
 import javax.persistence.GeneratedValue
 
 @Entity
-@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="CONDICION", discriminatorType=DiscriminatorType.STRING)
 abstract class Condicion {
+	
 	@Id
 	@GeneratedValue
 	@Property Integer id
-	
+
 	def boolean puedeInscribirse(Partido partido)
-	
+
 }

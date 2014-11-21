@@ -35,4 +35,9 @@ class Solidario extends Tipo {
 	override setJugador(Jugador jugador) {
 		this.jugador = jugador
 	}
+	
+	new(){
+		//lo necesita hibernate
+		super()
+	}
 }
