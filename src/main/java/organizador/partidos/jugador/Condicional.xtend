@@ -6,10 +6,11 @@ import javax.persistence.OneToOne
 import organizador.partido.excepciones.EstaCompletoException
 import organizador.partido.excepciones.NoCumpleCondicionParaInscribirseException
 import organizador.partidos.partido.Partido
+import java.io.Serializable
 
 @Entity
 @DiscriminatorValue("C")
-class Condicional extends Tipo {
+class Condicional extends Tipo implements Serializable{
 	
 	
 	@OneToOne

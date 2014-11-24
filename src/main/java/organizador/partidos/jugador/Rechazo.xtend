@@ -1,8 +1,16 @@
 package organizador.partidos.jugador
 
-import java.util.Date
+import java.util.Dateimport java.io.Serializable
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.Entity
 
-class Rechazo {
+@Entity
+class Rechazo implements Serializable {
+	
+	@Id
+	@GeneratedValue
+	@Property Integer id
 
 	@Property String descripcion
 	@Property Date fecha

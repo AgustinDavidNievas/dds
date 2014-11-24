@@ -8,11 +8,12 @@ import javax.persistence.DiscriminatorColumn
 import javax.persistence.DiscriminatorType
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
+import java.io.Serializable
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="CONDICION", discriminatorType=DiscriminatorType.STRING)
-abstract class Condicion {
+abstract class Condicion implements Serializable {
 	
 	@Id
 	@GeneratedValue

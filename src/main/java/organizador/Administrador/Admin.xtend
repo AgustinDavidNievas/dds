@@ -9,15 +9,39 @@ import organizador.partidos.jugador.Postulante
 import organizador.partidos.jugador.Rechazo
 import organizador.partidos.partido.Partido
 import organizador.partidos.creador.CreadorDeEquipos
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.OneToOne
+import java.io.Serializable
+import javax.persistence.OneToMany
+import javax.persistence.ManyToOne
+import javax.persistence.Entity
 
-class Admin {
-
+@Entity
+class Admin implements Serializable{
+	
+	@Id
+	@GeneratedValue
+	@Property Integer id //si le pongo long me tira error en los xtend-gen
+	
 	@Property String correo
+	
+	@OneToOne
 	@Property Partido partido
+	
+	@ManyToOne
 	@Property Condicion condicion
+	
+	@OneToMany
 	@Property List<Rechazo> rechazados = new ArrayList
+	
+	@OneToMany
 	@Property List<Postulante> pendientes = new ArrayList
+	
+	@OneToMany
 	@Property List<Jugador> equipoTentativo1
+	
+	@OneToMany
 	@Property List<Jugador> equipoTentativo2
 	
 	//*****Para que funcione la UI*****

@@ -1,8 +1,15 @@
 package organizador.partidos.partido
 
+import java.io.Serializable
 import java.util.ArrayList
 import java.util.Date
 import java.util.List
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.OneToMany
+import javax.persistence.OneToOne
+import org.uqbar.commons.utils.Observable
 import organizador.Administrador.Admin
 import organizador.partidos.correo.EnviadorDeMails
 import organizador.partidos.correo.Mail
@@ -11,14 +18,6 @@ import organizador.partidos.jugador.Jugador
 import organizador.partidos.jugador.Postulante
 import organizador.partidos.observer.NuevoInscriptoObserver
 import organizador.partidos.observer.PartidoConfirmadoObserver
-import java.io.Serializable
-import javax.persistence.Id
-import javax.persistence.GeneratedValue
-import javax.persistence.OneToMany
-import javax.persistence.CascadeType
-import javax.persistence.Entity        //preguntarle esto a Lucas
-//import org.uqbar.commons.model.Entity
-import org.uqbar.commons.utils.Observable
 
 @Entity
 @Observable
@@ -40,6 +39,8 @@ class Partido extends org.uqbar.commons.model.Entity implements Serializable{
 	@Property Date fechaDelPartido //preguntar como se usa esta clase
 	@Property List<PartidoConfirmadoObserver> partidoConfirmadoObserver
 	@Property List<NuevoInscriptoObserver> nuevoInscriptoObserver
+	
+	@OneToOne
 	@Property Admin administrador
 
 	//@Property String correoDelAdmin

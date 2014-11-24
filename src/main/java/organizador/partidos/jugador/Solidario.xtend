@@ -4,10 +4,11 @@ import javax.persistence.DiscriminatorValue
 import javax.persistence.Entity
 import javax.persistence.OneToOne
 import organizador.partidos.partido.Partido
+import java.io.Serializable
 
 @Entity
 @DiscriminatorValue("S")
-class Solidario extends Tipo {
+class Solidario extends Tipo implements Serializable {
 	
 	@OneToOne
 	@Property Jugador jugador2

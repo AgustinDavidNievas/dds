@@ -12,6 +12,9 @@ import organizador.partidos.partido.Partido
 import organizador.partidos.jugador.Solidario
 import organizador.partidos.jugador.Estandar
 import organizador.partidos.jugador.Condicional
+import organizador.Administrador.Admin
+import organizador.partidos.jugador.Postulante
+import organizador.partidos.jugador.Rechazo
 
 class SessionManager {
 	
@@ -49,6 +52,9 @@ class SessionManager {
 		cfg.addAnnotatedClass(Solidario)
 		cfg.addAnnotatedClass(Estandar)
 		cfg.addAnnotatedClass(Condicional)
+		cfg.addAnnotatedClass(Admin)
+		cfg.addAnnotatedClass(Postulante)
+		cfg.addAnnotatedClass(Rechazo)
 	}
 	
 	def static startApplication(){

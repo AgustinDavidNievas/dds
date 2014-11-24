@@ -5,10 +5,11 @@ import javax.persistence.Entity
 import organizador.partidos.partido.Partido
 import javax.persistence.Basic
 import javax.persistence.Column
+import java.io.Serializable
 
 @Entity
 @DiscriminatorValue("E")
-class CondicionEdad extends Condicion {
+class CondicionEdad extends Condicion implements Serializable{
 	
 	@Basic
 	@Column(name = "EDADMAXIMA")	

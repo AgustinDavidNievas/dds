@@ -5,10 +5,11 @@ import javax.persistence.Entity
 import organizador.partidos.partido.Partido
 import javax.persistence.Basic
 import javax.persistence.Column
+import java.io.Serializable
 
 @Entity
 @DiscriminatorValue("T")
-class CondicionTurno extends Condicion {
+class CondicionTurno extends Condicion implements Serializable{
 	
 	@Basic
 	@Column(name = "TURNO")
