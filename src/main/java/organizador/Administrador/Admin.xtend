@@ -45,6 +45,7 @@ class Admin implements Serializable{
 	@Property List<Jugador> equipoTentativo2
 	
 	//*****Para que funcione la UI*****
+	@OneToMany
 	@Property List<Jugador> inscriptosOrdenados
 	//*********************************
 
