@@ -16,6 +16,7 @@ import organizador.Administrador.Admin
 import organizador.partidos.jugador.Postulante
 import organizador.partidos.jugador.Rechazo
 import organizador.partidos.correo.EnviadorDeMails
+import organizador.partidos.correo.Mail
 
 class SessionManager {
 	
@@ -57,6 +58,7 @@ class SessionManager {
 		cfg.addAnnotatedClass(Postulante)
 		cfg.addAnnotatedClass(Rechazo)
 		cfg.addAnnotatedClass(EnviadorDeMails)
+		cfg.addAnnotatedClass(Mail)
 	}
 	
 	def static startApplication(){

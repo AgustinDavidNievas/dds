@@ -44,7 +44,10 @@ class Partido extends org.uqbar.commons.model.Entity implements Serializable{
 	@Property Admin administrador
 
 	//@Property String correoDelAdmin
+	@OneToOne
 	@Property Mail mailAvisoAlAdmin
+	
+	@OneToOne
 	@Property Mail mailAvisoJugadores
 	
 	@OneToOne

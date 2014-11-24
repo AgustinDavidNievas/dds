@@ -96,7 +96,7 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 	@Property int promedioDeTodosLosPartidos = 0
 	
 	@OneToMany(targetEntity=InfraccionSeDaDeBajaSinRemplazante)
-	@Property List<Infraccion> infracciones //rompe porque es una Interfaz, preguntar a Lucas
+	@Property List<Infraccion> infracciones 
 	
 	@ManyToOne
 	@Property Partido partido
