@@ -37,7 +37,11 @@ class Partido extends org.uqbar.commons.model.Entity implements Serializable{
 	
 	String turno //"M" "T" "N"
 	@Property Date fechaDelPartido //preguntar como se usa esta clase
+	
+	@OneToMany
 	@Property List<PartidoConfirmadoObserver> partidoConfirmadoObserver
+	
+	@OneToMany
 	@Property List<NuevoInscriptoObserver> nuevoInscriptoObserver
 	
 	@OneToOne

@@ -5,12 +5,29 @@ import organizador.partidos.correo.EnviadorDeMails
 import organizador.partidos.correo.Mail
 import java.util.List
 import java.util.ArrayList
+import java.io.Serializable
+import javax.persistence.Entity
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.OneToOne
+import javax.persistence.ElementCollection
 
-class PartidoConfirmadoObserver {
+@Entity
+class PartidoConfirmadoObserver implements Serializable{
+	
+	@Id
+	@GeneratedValue
+	@Property Integer id
 
 	@Property boolean partidoConfirmado
+	
+	@OneToOne
 	@Property EnviadorDeMails enviadorDeMails
+	
+	@OneToOne
 	@Property Mail mailAvisoAlAdmin
+	
+	@ElementCollection
 	@Property List<String> listaCorreoJugadores = new ArrayList
 
 	new() {

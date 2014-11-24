@@ -4,10 +4,23 @@ import organizador.partidos.partido.Partido
 import organizador.partidos.jugador.Jugador
 import organizador.partidos.correo.Mail
 import organizador.partidos.correo.EnviadorDeMails
+import java.io.Serializable
+import javax.persistence.Entity
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.OneToOne
 
-class NuevoInscriptoObserver {
-
+@Entity
+class NuevoInscriptoObserver implements Serializable {
+	
+	@Id
+	@GeneratedValue
+	@Property Integer id
+	
+	@OneToOne
 	@Property Mail mailAvisoNuevoJugador
+	
+	@OneToOne
 	@Property EnviadorDeMails enviadorDeMails
 
 	def notificarALosJugadoresQueSeInscribioAlguien(Partido partido, Jugador jugadorQueSeInscribio) {
