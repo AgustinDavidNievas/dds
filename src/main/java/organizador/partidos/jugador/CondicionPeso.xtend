@@ -1,15 +1,14 @@
 package organizador.partidos.jugador
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import organizador.partidos.partido.Partido
 import javax.persistence.DiscriminatorValue
+import javax.persistence.Entity
+import organizador.partidos.partido.Partido
 
 @Entity
 @DiscriminatorValue("P")
 class CondicionPeso extends Condicion {
-
+	
+	
 	@Property int peso
 
 	override puedeInscribirse(Partido partido) {
