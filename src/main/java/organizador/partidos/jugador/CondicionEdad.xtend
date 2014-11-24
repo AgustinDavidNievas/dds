@@ -3,15 +3,19 @@ package organizador.partidos.jugador
 import javax.persistence.DiscriminatorValue
 import javax.persistence.Entity
 import organizador.partidos.partido.Partido
+import javax.persistence.Basic
+import javax.persistence.Column
 
 @Entity
 @DiscriminatorValue("E")
 class CondicionEdad extends Condicion {
 	
-	
+	@Basic
+	@Column(name = "EDADMAXIMA")	
 	@Property int edadMaxima
 	
-	
+	@Basic
+	@Column(name = "EDADMINIMA")
 	@Property int edadMinima
 
 	override puedeInscribirse(Partido partido) {
