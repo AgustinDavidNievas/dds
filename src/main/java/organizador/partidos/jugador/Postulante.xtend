@@ -16,4 +16,8 @@ class Postulante extends Jugador implements Serializable {
 	def comoJugador() {
 		return Jugador.crearJugador(this)
 	}
+	
+	new(){
+		super()
+	}
 }

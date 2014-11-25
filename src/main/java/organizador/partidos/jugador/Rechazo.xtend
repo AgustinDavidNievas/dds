@@ -22,5 +22,9 @@ class Rechazo implements Serializable {
 		fecha = new Date
 		
 	}
+	
+	new(){
+		super()
+	}
 
 }

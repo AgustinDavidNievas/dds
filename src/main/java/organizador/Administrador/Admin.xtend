@@ -101,5 +101,9 @@ class Admin implements Serializable{
 		partido.almacenarEquipos(equipoTentativo1, equipoTentativo2)
 
 	}
+	
+	new(){
+		super()
+	}
 
 }
