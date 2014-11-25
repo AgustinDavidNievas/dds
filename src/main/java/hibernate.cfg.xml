@@ -4,10 +4,10 @@
 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
-        <!-- Creo que las propertys van asi pero no estoy seguro, si algo no funciona, el problema porbablemente este en esta configuracion  -->
-<!--         <property name="hibernate.connection.url">jdbc:hsqldb:file:un_nombre_unico</property> -->
-		<property name="hibernate.connection.url">jdbc:hsqldb:mem:Partido</property>
+        <property name="hibernate.connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>
+<!--    <property name="hibernate.connection.url">jdbc:hsqldb:file:un_nombre_unico</property> -->
+<!--    <property name="hibernate.connection.url">jdbc:hsqldb:mem:Partido</property> -->
+   		<property name="hibernate.connection.url">jdbc:hsqldb:hsql://localhost/dds</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password"></property>
 
