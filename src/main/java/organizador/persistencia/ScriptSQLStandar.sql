@@ -13,6 +13,44 @@ DROP table Public.TL_Rechazo;
 DROP table Public.TL_Condicion;
 
 
+CREATE TABLE PUBLIC.TL_Condicion (
+
+			ID_Condicion nvarchar(50),
+			Discriminador varchar(50),
+			Edad_Max numeric(3,0),
+			Edad_Min numeric(3,0),
+			Peo numeric(3,0),
+			Turno nvarchar(50)
+);
+
+ CREATE TABLE Public.TL_Tipo(
+    ID_Tipo INTEGER PRIMARY KEY,
+    Prioridad int,
+    Descripcion nvarchar(65)
+);
+
+
+CREATE TABLE PUBLIC.TL_EnviadorDeMails(
+
+			ID_EnviadorDeMails nvarchar(50)
+			
+);
+
+CREATE TABLE PUBLIC.TL_MAIL(
+
+			ID_Mail nvarchar(50),
+			ID_Emisor nvarchar(50),
+			ID_Usuario nvarchar(50),
+			Fecha_Envio datetime,
+			Subject varchar(255),
+			Body varchar(255),
+			FOREIGN KEY ID_Emisor REFERENCES PUBLIC.TL_Mail ID_Emisor,
+			FOREIGN KEY ID_Usuario REFERENCES PUBLIC.TL_Mail ID_Usuario
+
+);
+
+
+
 CREATE TABLE PUBLIC.TL_Partido(
     ID_Partido INTEGER PRIMARY KEY,
     Fecha datetime,
@@ -28,11 +66,6 @@ CREATE TABLE PUBLIC.TL_Partido(
     FOREIGN KEY ID_EnviadorDeMails REFERENCES PUBLIC.TL_EnviadorDeMails ID_EnviadorDeMails,
     );
 
- CREATE TABLE Public.TL_Tipo(
-    ID_Tipo INTEGER PRIMARY KEY,
-    Prioridad int,
-    Descripcion nvarchar(65)
-);
 
 
 CREATE TABLE PUBLIC.TL_Jugador(
@@ -88,24 +121,6 @@ CREATE TABLE PUBLIC.TL_InfraccionSeDADEBajaSinRemplazante(
 
 );
 
-CREATE TABLE PUBLIC.TL_EnviadorDeMails(
-
-			ID_EnviadorDeMails nvarchar(50)
-			
-);
-
-CREATE TABLE PUBLIC.TL_MAIL(
-
-			ID_Mail nvarchar(50),
-			ID_Emisor nvarchar(50),
-			ID_Usuario nvarchar(50),
-			Fecha_Envio datetime,
-			Subject varchar(255),
-			Body varchar(255),
-			FOREIGN KEY ID_Emisor REFERENCES PUBLIC.TL_Mail ID_Emisor,
-			FOREIGN KEY ID_Usuario REFERENCES PUBLIC.TL_Mail ID_Usuario
-
-);
 
 CREATE TABLE PUBLIC.TL_Admin(
 
@@ -117,16 +132,15 @@ CREATE TABLE PUBLIC.TL_Admin(
 			FOREIGN KEY ID_Condicion REFERENCES PUBLIC.TL_Condicion ID_Condicion
 );
 
+CREATE TABLE PUBLIC.TL_Postulante(
 
-CREATE TABLE PUBLIC.TL_Condicion (
+			ID_Postulante nvarchar(50),
+			Nombre varchar(255),
+			ID_Admin nvarchar(50),
+			FOREIGN KEY ID_Admin REFERENCES PUBLIC.TL_Admin ID_Admin
 
-			ID_Condicion nvarchar(50),
-			Discriminador varchar(50),
-			Edad_Max numeric(3,0),
-			Edad_Min numeric(3,0),
-			Peo numeric(3,0),
-			Turno nvarchar(50)
 );
+
 
 
 CREATE TABLE PUBLIC.TL_Rechazo (
@@ -141,14 +155,6 @@ CREATE TABLE PUBLIC.TL_Rechazo (
 );
 
 
-CREATE TABLE PUBLIC.TL_Postulante(
-
-			ID_Postulante nvarchar(50),
-			Nombre varchar(255),
-			ID_Admin nvarchar(50),
-			FOREIGN KEY ID_Admin REFERENCES PUBLIC.TL_Admin ID_Admin
-
-);
 			
 			
 
