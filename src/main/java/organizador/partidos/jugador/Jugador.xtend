@@ -48,7 +48,7 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable {
 	@Column(name="CORREO")
 	@Property String correo
 
-	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="jugador")//aca no es property, aca no va "_"
+	@OneToOne//(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="jugador")//aca no es property, aca no va "_"
 	Tipo tipo
 
 	@Basic

@@ -5,12 +5,13 @@ import javax.persistence.Entity
 import javax.persistence.OneToOne
 import organizador.partidos.partido.Partido
 import java.io.Serializable
+import javax.persistence.CascadeType
 
 @Entity
 @DiscriminatorValue("S")
 class Solidario extends Tipo implements Serializable {
 	
-	@OneToOne//mappeo aclarado en Jugador
+	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="tipo")//mappeo aclarado en Jugador
 	@Property Jugador jugador2
 	
 	int prioridad = 2

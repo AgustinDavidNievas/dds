@@ -7,13 +7,14 @@ import organizador.partido.excepciones.EstaCompletoException
 import organizador.partido.excepciones.NoCumpleCondicionParaInscribirseException
 import organizador.partidos.partido.Partido
 import java.io.Serializable
+import javax.persistence.CascadeType
 
 @Entity
 @DiscriminatorValue("C")
 class Condicional extends Tipo implements Serializable{
 	
 	
-	@OneToOne//mappeo aclarado en Jugador
+	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="tipo")//mappeo aclarado en Jugador
 	@Property Jugador jugador2
 	
 	int prioridad = 3
