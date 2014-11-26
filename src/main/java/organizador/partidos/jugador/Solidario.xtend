@@ -11,7 +11,7 @@ import javax.persistence.CascadeType
 @DiscriminatorValue("S")
 class Solidario extends Tipo implements Serializable {
 	
-	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="tipo")//mappeo aclarado en Jugador
+	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="tipo")
 	@Property Jugador jugador2
 	
 	int prioridad = 2
