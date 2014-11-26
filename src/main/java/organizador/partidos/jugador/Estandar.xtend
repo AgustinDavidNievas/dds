@@ -10,7 +10,7 @@ import java.io.Serializable
 @DiscriminatorValue("E")
 class Estandar extends Tipo implements Serializable{
 	
-	@OneToOne
+	@OneToOne//mappeo aclarado en Jugador
 	@Property Jugador jugador2
 		
 	int prioridad = 1

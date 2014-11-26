@@ -21,11 +21,12 @@ import organizador.partidos.jugador.Infracciones.InfraccionSeDaDeBajaSinRemplaza
 import organizador.partidos.partido.Partido
 import javax.persistence.Temporal
 import javax.persistence.TemporalType
+import javax.persistence.CascadeType
 
 @Entity
 @Observable
-class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
-	
+class Jugador extends org.uqbar.commons.model.Entity implements Serializable {
+
 	/*Every non static non transient property (field or method depending on the access type) of an entity is considered persistent, 
 	 * unless you annotate it as @Transient. 
 	 * Not having an annotation for your property is equivalent to the appropriate @Basic annotation. 
@@ -35,73 +36,72 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 	 * The detailedComment property value will be lazily fetched from the database once a lazy property of the entity is accessed for the first time. 
 	 * Usually you don't need to lazy simple properties (not to be confused with lazy association fetching).
 	 */
-	
 	@Id
 	@GeneratedValue
 	@Property Integer id //si le pongo long me tira error en los xtend-gen
-	
+
 	@Basic
-	@Column(name = "NOMBRE")
+	@Column(name="NOMBRE")
 	@Property String nombre
-	
+
 	@Basic
-	@Column(name = "CORREO")
+	@Column(name="CORREO")
 	@Property String correo
-	
-	@OneToOne
+
+	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="jugador")//aca no es property, aca no va "_"
 	Tipo tipo
-	
+
 	@Basic
-	@Column(name = "PESO")
+	@Column(name="PESO")
 	@Property int peso
-	
+
 	@Basic
-	@Column(name = "EDAD")
+	@Column(name="EDAD")
 	@Property int edad
-	
+
 	@ManyToOne
-    @Property Condicion condicion
-	
-	@OneToMany
+	@Property Condicion condicion
+
+	@OneToMany //se le tiene que agregar algo a esto??
 	@Property List<Jugador> amigos = new ArrayList
-	
+
 	@ElementCollection
 	@Property List<Integer> listaDeCalificaciones
-	
+
 	@Basic
-	@Column(name = "HANDICAP")
-	@Property Integer handicap	
-	
-	
+	@Column(name="HANDICAP")
+	@Property Integer handicap
+
 	@ElementCollection
 	@Property List<Integer> calificacionesDelUltimoPartido
-	
+
 	@Basic
-	@Column(name = "APODO")
+	@Column(name="APODO")
 	@Property String apodo
-	
+
 	@Temporal(TemporalType.TIME)
-	@Property Date fechaDeNacimiento = new Date(1,1,1)
-	
+	@Property Date fechaDeNacimiento = new Date(1, 1, 1)
+
 	@Basic
-	@Column(name = "PARTIDOSJUGADOS")
+	@Column(name="PARTIDOSJUGADOS")
 	@Property int partidosJugados = 1
-	
+
 	@Basic
-	@Column(name = "PROMEDIODEULTIMOPARTIDO")
+	@Column(name="PROMEDIODEULTIMOPARTIDO")
 	@Property int promedioDeUltimoPartido = 0
-	
+
 	@Basic
-	@Column(name = "PROMEDIODETODOSLOSPARTIDOS")
+	@Column(name="PROMEDIODETODOSLOSPARTIDOS")
 	@Property int promedioDeTodosLosPartidos = 0
-	
-	@OneToMany(targetEntity=InfraccionSeDaDeBajaSinRemplazante)
-	@Property List<Infraccion> infracciones 
-	
-	@ManyToOne
+
+	@OneToMany(targetEntity=InfraccionSeDaDeBajaSinRemplazante, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="_jugador")
+	@Property List<Infraccion> infracciones
+
+	@ManyToOne //El mappeo esta aclarado en Partido
 	@Property Partido partido
-	
-	new(){
+
+	new() {
+
 		//lo necesita hibernate
 		super()
 	}
@@ -116,8 +116,8 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 		this.inicializarListaDeCalificaciones
 		this.apodo = "No hay apodo asignado"
 		this.infracciones = newArrayList
-			}
-	
+	}
+
 	/*Para que no rompan los test se deja el new de arriba, este se necesita para la entrega de UI ya que agregaron propiedades que antes no tenia */
 	new(String nombre, Tipo tipo, int edad, String unApodo) {
 		this.nombre = nombre
@@ -130,9 +130,10 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 		this.apodo = unApodo
 		this.infracciones = newArrayList
 	}
+
 	/***********************************************************************************************************************************************/
-	
-	new(String nombre, Tipo tipo, int edad, String apodo, Integer handicap, List<Integer> listaDeCalificaciones){
+	new(String nombre, Tipo tipo, int edad, String apodo, Integer handicap, List<Integer> listaDeCalificaciones) {
+
 		//este new esta para simplificar la carga de datos del home
 		this.nombre = nombre
 		this.peso = 100
@@ -146,9 +147,9 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 		this.handicap = handicap
 		this.listaDeCalificaciones = listaDeCalificaciones
 	}
-	
-	def asignarApodo(String apodo){
-		
+
+	def asignarApodo(String apodo) {
+
 		this.apodo = apodo
 	}
 
@@ -156,13 +157,11 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 		amigos = newArrayList
 	}
 
-
 	def void inicializarListaDeCalificaciones() {
-				this.listaDeCalificaciones = newArrayList
+		this.listaDeCalificaciones = newArrayList
 		this.calificacionesDelUltimoPartido = newArrayList
 	}
-	
-	
+
 	//@OneToOne
 	def getTipo() {
 		this.tipo
@@ -184,7 +183,6 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 	/*def getNombre() {
 		this.nombre
 	}*/
-
 	def agregarAmigo(Jugador jugador) {
 		this.amigos.add(jugador)
 	}
@@ -227,48 +225,47 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable{
 		partido.evaluarPostulante(amigo) //ya no rompe encapsulamiento
 
 	}
-	
+
 	def aniadirNotaAListaDeCalificaciones(Integer nota) {
 		this.listaDeCalificaciones.add(nota)
 	}
-	
-	
 
 	/**************************************Metodo de creacion de jugadores*************************************/
 	def static crearJugador(Postulante postulante) {
 		new Jugador(postulante.getNombre, postulante.getTipo, postulante.edad)
 	}
+
 	/**********************************************************************************************************/
-	
-	def void calificarA(Jugador jugador, Integer nota, String critica){
+	def void calificarA(Jugador jugador, Integer nota, String critica) {
 		jugador.aniadirNotaAListaDeCalificaciones = nota
 		jugador.aniadirNotaAListaDeCalificacionesUltimoPartido = nota
 	}
-	
+
 	def setAniadirNotaAListaDeCalificacionesUltimoPartido(Integer nota) {
 		this.calificacionesDelUltimoPartido.add(nota)
 		this.promedioDeTodosLosPartidos()
 		this.promedioDelUltimoPartido()
-		
+
 	}
-	
-	def tuHandicapEs(Integer numero){
+
+	def tuHandicapEs(Integer numero) {
 		this.handicap = numero
 	}
-	
-	def promedioDelUltimoPartido(){
+
+	def promedioDelUltimoPartido() {
 		this.promedioDeUltimoPartido = (new UltimasCalificaciones).aplicarCriterio(this)
-		
+
 	}
-	
-	def promedioDeTodosLosPartidos(){
-		this.promedioDeTodosLosPartidos= (new CriterioPromedioNCalificaciones(this.partidosJugados))
-			.aplicarCriterio(this)
-		
+
+	def promedioDeTodosLosPartidos() {
+		this.promedioDeTodosLosPartidos = (new CriterioPromedioNCalificaciones(this.partidosJugados)).
+			aplicarCriterio(this)
+
 	}
-	
-	def agregarInfraccion(InfraccionSeDaDeBajaSinRemplazante infraccion){
-							//Aca iba Infraccion
+
+	def agregarInfraccion(InfraccionSeDaDeBajaSinRemplazante infraccion) {
+
+		//Aca iba Infraccion
 		this.infracciones.add(infraccion)
 	}
 }

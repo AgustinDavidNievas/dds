@@ -26,7 +26,7 @@ class Admin implements Serializable{
 	
 	@Property String correo
 	
-	@OneToOne
+	@OneToOne//el mappeo ya esta aclarado en Partido
 	@Property Partido partido
 	
 	@ManyToOne

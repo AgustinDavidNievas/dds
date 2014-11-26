@@ -13,7 +13,7 @@ import java.io.Serializable
 class Condicional extends Tipo implements Serializable{
 	
 	
-	@OneToOne
+	@OneToOne//mappeo aclarado en Jugador
 	@Property Jugador jugador2
 	
 	int prioridad = 3

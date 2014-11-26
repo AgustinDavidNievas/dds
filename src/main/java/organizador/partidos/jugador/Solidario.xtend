@@ -10,7 +10,7 @@ import java.io.Serializable
 @DiscriminatorValue("S")
 class Solidario extends Tipo implements Serializable {
 	
-	@OneToOne
+	@OneToOne//mappeo aclarado en Jugador
 	@Property Jugador jugador2
 	
 	int prioridad = 2
