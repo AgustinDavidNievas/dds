@@ -18,6 +18,8 @@ import organizador.partidos.jugador.Jugador
 import organizador.partidos.jugador.Postulante
 import organizador.partidos.observer.NuevoInscriptoObserver
 import organizador.partidos.observer.PartidoConfirmadoObserver
+import javax.persistence.CascadeType
+import organizador.partidos.jugador.Infracciones.InfraccionSeDaDeBajaSinRemplazante
 
 @Entity
 @Observable
@@ -30,9 +32,11 @@ class Partido extends org.uqbar.commons.model.Entity implements Serializable{
 	var String fecha //'20/05/14'
 	var String lugar
 	var String horario //'07:00pm'
+	
+	@OneToOne(targetEntity=InfraccionSeDaDeBajaSinRemplazante)
 	@Property Infraccion infraccion
 	
-	@OneToMany//(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="partido")
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="_partido")
 	@Property List<Jugador> inscriptos = new ArrayList
 	
 	String turno //"M" "T" "N"
@@ -44,7 +48,7 @@ class Partido extends org.uqbar.commons.model.Entity implements Serializable{
 	@OneToMany
 	@Property List<NuevoInscriptoObserver> nuevoInscriptoObserver
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="_partido")
 	@Property Admin administrador
 
 	//@Property String correoDelAdmin
@@ -57,10 +61,10 @@ class Partido extends org.uqbar.commons.model.Entity implements Serializable{
 	@OneToOne
 	@Property EnviadorDeMails enviadorDeMails
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="_partido")
 	@Property List<Jugador> equipo1
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="_partido")
 	@Property List<Jugador> equipo2
 
 	/*Inicializacion */
