@@ -20,6 +20,8 @@ import organizador.partidos.observer.NuevoInscriptoObserver
 import organizador.partidos.observer.PartidoConfirmadoObserver
 import javax.persistence.CascadeType
 import organizador.partidos.jugador.Infracciones.InfraccionSeDaDeBajaSinRemplazante
+import javax.persistence.Column
+import javax.persistence.JoinColumn
 
 @Entity
 @Observable
@@ -27,44 +29,58 @@ class Partido extends org.uqbar.commons.model.Entity implements Serializable{
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	@Property Integer id
-
+	
 	var String fecha //'20/05/14'
 	var String lugar
 	var String horario //'07:00pm'
 	
 	@OneToOne(targetEntity=InfraccionSeDaDeBajaSinRemplazante)
+	@JoinColumn(name="infraccion")
 	@Property Infraccion infraccion
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="_partido")
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true/*, mappedBy="partido"*/)
+	@JoinColumn(name="inscriptos")//googleando lei que no se puede usar un mappedBy con un @JoinColumn
 	@Property List<Jugador> inscriptos = new ArrayList
 	
+	@Column(name = "turno")
 	String turno //"M" "T" "N"
+	
+	@Column(name = "fechaDelPartido")
 	@Property Date fechaDelPartido //preguntar como se usa esta clase
 	
 	@OneToMany
+	@JoinColumn(name="partidoConfirmadoObserver")
 	@Property List<PartidoConfirmadoObserver> partidoConfirmadoObserver
 	
 	@OneToMany
+	@JoinColumn(name="nuevoInscriptoObserver")
 	@Property List<NuevoInscriptoObserver> nuevoInscriptoObserver
 	
-	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="_partido")
+	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true/*,  mappedBy="partido"*/)
+	@JoinColumn(name="administrador")//googleando lei que no se puede usar un mappedBy con un @JoinColumn
 	@Property Admin administrador
 
 	//@Property String correoDelAdmin
 	@OneToOne
+	@JoinColumn(name="mailAvisoAdmin")
 	@Property Mail mailAvisoAlAdmin
 	
 	@OneToOne
+	@JoinColumn(name="mailAvisoJugadores")
 	@Property Mail mailAvisoJugadores
 	
 	@OneToOne
+	@JoinColumn(name="enviadorDeMails")
 	@Property EnviadorDeMails enviadorDeMails
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="_partido")
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true/*, mappedBy="partido"*/)
+	@JoinColumn(name="equipo1")//googleando lei que no se puede usar un mappedBy con un @JoinColumn
 	@Property List<Jugador> equipo1
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="_partido")
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true/*, mappedBy="partido"*/)
+	@JoinColumn(name="equipo1")//googleando lei que no se puede usar un mappedBy con un @JoinColumn
 	@Property List<Jugador> equipo2
 
 	/*Inicializacion */

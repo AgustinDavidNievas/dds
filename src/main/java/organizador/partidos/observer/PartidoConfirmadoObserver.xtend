@@ -11,23 +11,30 @@ import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.OneToOne
 import javax.persistence.ElementCollection
+import javax.persistence.Column
+import javax.persistence.JoinColumn
 
 @Entity
 class PartidoConfirmadoObserver implements Serializable{
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	@Property Integer id
-
+	
+	@Column(name="partidoConfirmado")
 	@Property boolean partidoConfirmado
 	
 	@OneToOne
+	@JoinColumn(name="enviadorDeMails")
 	@Property EnviadorDeMails enviadorDeMails
 	
 	@OneToOne
+	@JoinColumn(name="mailAvisoAlAdmin")
 	@Property Mail mailAvisoAlAdmin
 	
 	@ElementCollection
+	@Column(name="listaCorreoJugadores")
 	@Property List<String> listaCorreoJugadores = new ArrayList
 
 	new() {

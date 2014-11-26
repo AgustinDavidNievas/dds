@@ -22,6 +22,7 @@ import organizador.partidos.partido.Partido
 import javax.persistence.Temporal
 import javax.persistence.TemporalType
 import javax.persistence.CascadeType
+import javax.persistence.JoinColumn
 
 @Entity
 @Observable
@@ -38,6 +39,7 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable {
 	 */
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	@Property Integer id //si le pongo long me tira error en los xtend-gen
 
 	@Basic
@@ -60,12 +62,15 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable {
 	@Property int edad
 
 	@ManyToOne
+	@JoinColumn(name="condicion")
 	@Property Condicion condicion
 
 	@OneToMany //se le tiene que agregar algo a esto??
+	@JoinColumn(name="amigos")
 	@Property List<Jugador> amigos = new ArrayList
 
 	@ElementCollection
+	@Column(name="listaDeCalificaciones")
 	@Property List<Integer> listaDeCalificaciones
 
 	@Basic
@@ -73,16 +78,16 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable {
 	@Property Integer handicap
 
 	@ElementCollection
+	@Column(name="calificacionesDelUltimoPartido")
 	@Property List<Integer> calificacionesDelUltimoPartido
 
-	@Basic
 	@Column(name="APODO")
 	@Property String apodo
 
 	@Temporal(TemporalType.TIME)
+	@Column(name="fechaDeNacimiento")
 	@Property Date fechaDeNacimiento = new Date(1, 1, 1)
 
-	@Basic
 	@Column(name="PARTIDOSJUGADOS")
 	@Property int partidosJugados = 1
 
@@ -94,10 +99,12 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable {
 	@Column(name="PROMEDIODETODOSLOSPARTIDOS")
 	@Property int promedioDeTodosLosPartidos = 0
 
-	@OneToMany(targetEntity=InfraccionSeDaDeBajaSinRemplazante, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="_jugador")
+	@OneToMany(targetEntity=InfraccionSeDaDeBajaSinRemplazante, cascade=CascadeType.ALL/* , orphanRemoval=true, mappedBy="_jugador"*/)
+	@JoinColumn(name="infracciones")//googleando lei que no se puede usar un mappedBy con un @JoinColumn
 	@Property List<Infraccion> infracciones
 
 	@ManyToOne //El mappeo esta aclarado en Partido
+	@JoinColumn(name="partido")
 	@Property Partido partido
 
 	new() {

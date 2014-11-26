@@ -6,12 +6,14 @@ import javax.persistence.OneToOne
 import organizador.partidos.partido.Partido
 import java.io.Serializable
 import javax.persistence.CascadeType
+import javax.persistence.JoinColumn
 
 @Entity
 @DiscriminatorValue("S")
 class Solidario extends Tipo implements Serializable {
 	
 	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="tipo")
+	@JoinColumn(name="jugador2")
 	@Property Jugador jugador2
 	
 	int prioridad = 2

@@ -16,36 +16,49 @@ import java.io.Serializable
 import javax.persistence.OneToMany
 import javax.persistence.ManyToOne
 import javax.persistence.Entity
+import javax.persistence.Column
+import javax.persistence.JoinColumn
+import javax.persistence.Basic
 
 @Entity
 class Admin implements Serializable{
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	@Property Integer id //si le pongo long me tira error en los xtend-gen
 	
+	@Basic
+	@Column(name = "correo")
 	@Property String correo
 	
 	@OneToOne//el mappeo ya esta aclarado en Partido
+	@JoinColumn(name="partido")
 	@Property Partido partido
 	
 	@ManyToOne
+	@JoinColumn(name="condicion")
 	@Property Condicion condicion
 	
 	@OneToMany
+	@JoinColumn(name="rechazados")
 	@Property List<Rechazo> rechazados = new ArrayList
 	
 	@OneToMany
+	@JoinColumn(name="pendientes")
 	@Property List<Postulante> pendientes = new ArrayList
 	
 	@OneToMany
+	@JoinColumn(name="equipoTentativo1")
 	@Property List<Jugador> equipoTentativo1
 	
 	@OneToMany
+	@JoinColumn(name="equipoTentativo2")
 	@Property List<Jugador> equipoTentativo2
 	
 	//*****Para que funcione la UI*****
 	@OneToMany
+	@JoinColumn(name="inscriptosOrdenados")
 	@Property List<Jugador> inscriptosOrdenados
 	//*********************************
 

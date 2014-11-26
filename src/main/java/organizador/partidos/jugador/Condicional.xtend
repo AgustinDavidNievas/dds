@@ -8,6 +8,8 @@ import organizador.partido.excepciones.NoCumpleCondicionParaInscribirseException
 import organizador.partidos.partido.Partido
 import java.io.Serializable
 import javax.persistence.CascadeType
+import javax.persistence.JoinColumn
+import javax.persistence.Column
 
 @Entity
 @DiscriminatorValue("C")
@@ -15,6 +17,7 @@ class Condicional extends Tipo implements Serializable{
 	
 	
 	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="tipo")
+	@JoinColumn(name="jugador2")
 	@Property Jugador jugador2
 	
 	int prioridad = 3
@@ -24,7 +27,8 @@ class Condicional extends Tipo implements Serializable{
 	}
 
 	var Jugador jugador
-
+	
+	@Column(name="condicion")
 	@Property Condicion condicion
 
 	new() {

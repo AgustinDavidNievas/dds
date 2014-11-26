@@ -8,6 +8,7 @@ import javax.persistence.DiscriminatorType
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import java.io.Serializable
+import javax.persistence.Column
 
 @Entity
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
@@ -16,6 +17,7 @@ abstract class Tipo implements Serializable {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	@Property Integer id
 	
 		

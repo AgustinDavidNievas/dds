@@ -9,18 +9,23 @@ import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.OneToOne
+import javax.persistence.Column
+import javax.persistence.JoinColumn
 
 @Entity
 class NuevoInscriptoObserver implements Serializable {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	@Property Integer id
 	
 	@OneToOne
+	@JoinColumn(name="mailAvisoNuevoJugador")
 	@Property Mail mailAvisoNuevoJugador
 	
 	@OneToOne
+	@JoinColumn(name="enviadorDeMails")
 	@Property EnviadorDeMails enviadorDeMails
 
 	def notificarALosJugadoresQueSeInscribioAlguien(Partido partido, Jugador jugadorQueSeInscribio) {
