@@ -235,9 +235,9 @@ class Partido extends org.uqbar.commons.model.Entity implements Serializable{
 	}
 
 	
-	def listaDeCorreoDeJugadores() {
+	/*def listaDeCorreoDeJugadores() {
 		this.inscriptos.forEach[jugador|jugador.correo]
-	}
+	}*/
 
 	def agregarNuevoInscriptoObserver(NuevoInscriptoObserver nuevoObserver) {
 		this.nuevoInscriptoObserver.add(nuevoObserver)
