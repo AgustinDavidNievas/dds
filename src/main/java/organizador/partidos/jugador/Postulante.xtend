@@ -7,8 +7,8 @@ import javax.persistence.Column
 @Entity
 class Postulante extends Jugador implements Serializable {
 	
-	@Column(name="nombre")
-	@Property String nombre
+//	@Column(name="nombre")	 //ya hereda el nombre de jugador
+//	@Property String nombre
 
 	new(String nombre, Tipo tipo, int edad) {
 		super(nombre, tipo, edad)

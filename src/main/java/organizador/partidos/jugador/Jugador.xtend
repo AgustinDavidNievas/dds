@@ -50,7 +50,8 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable {
 	@Column(name="correo")
 	@Property String correo
 
-	@OneToOne//mappeo aclarado en Jugador
+	@OneToOne(cascade=CascadeType.ALL)//mappeo aclarado en Jugador
+	@JoinColumn(name = "tipo")
 	Tipo tipo
 
 	@Basic
