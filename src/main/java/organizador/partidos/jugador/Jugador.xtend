@@ -43,22 +43,22 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable {
 	@Property Integer id //si le pongo long me tira error en los xtend-gen
 
 	@Basic
-	@Column(name="NOMBRE")
+	@Column(name="nombre")
 	@Property String nombre
 
 	@Basic
-	@Column(name="CORREO")
+	@Column(name="correo")
 	@Property String correo
 
 	@OneToOne//mappeo aclarado en Jugador
 	Tipo tipo
 
 	@Basic
-	@Column(name="PESO")
+	@Column(name="peso")
 	@Property int peso
 
 	@Basic
-	@Column(name="EDAD")
+	@Column(name="edad")
 	@Property int edad
 
 	@ManyToOne
@@ -74,29 +74,29 @@ class Jugador extends org.uqbar.commons.model.Entity implements Serializable {
 	@Property List<Integer> listaDeCalificaciones
 
 	@Basic
-	@Column(name="HANDICAP")
+	@Column(name="handicap")
 	@Property Integer handicap
 
 	@ElementCollection
 	@Column(name="calificacionesDelUltimoPartido")
 	@Property List<Integer> calificacionesDelUltimoPartido
 
-	@Column(name="APODO")
+	@Column(name="apodo")
 	@Property String apodo
 
 	@Temporal(TemporalType.TIME)
 	@Column(name="fechaDeNacimiento")
 	@Property Date fechaDeNacimiento = new Date(1, 1, 1)
 
-	@Column(name="PARTIDOSJUGADOS")
+	@Column(name="partidosJugados")
 	@Property int partidosJugados = 1
 
 	@Basic
-	@Column(name="PROMEDIODEULTIMOPARTIDO")
+	@Column(name="promedioDeUltimoPartido")
 	@Property int promedioDeUltimoPartido = 0
 
 	@Basic
-	@Column(name="PROMEDIODETODOSLOSPARTIDOS")
+	@Column(name="promedioDeTodosLosPartidos")
 	@Property int promedioDeTodosLosPartidos = 0
 
 	@OneToMany(targetEntity=InfraccionSeDaDeBajaSinRemplazante, cascade=CascadeType.ALL/* , orphanRemoval=true, mappedBy="_jugador"*/)

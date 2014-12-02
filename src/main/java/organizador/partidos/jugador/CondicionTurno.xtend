@@ -12,7 +12,7 @@ import java.io.Serializable
 class CondicionTurno extends Condicion implements Serializable{
 	
 	@Basic
-	@Column(name = "TURNO")
+	@Column(name = "turno")
 	@Property String turno
 
 	override puedeInscribirse(Partido partido) {

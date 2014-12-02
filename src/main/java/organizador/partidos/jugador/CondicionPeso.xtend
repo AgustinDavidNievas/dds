@@ -12,7 +12,7 @@ import java.io.Serializable
 class CondicionPeso extends Condicion implements Serializable {
 	
 	@Basic
-	@Column(name = "PESO")
+	@Column(name = "peso")
 	@Property int peso
 
 	override puedeInscribirse(Partido partido) {

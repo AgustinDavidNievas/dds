@@ -12,11 +12,11 @@ import java.io.Serializable
 class CondicionEdad extends Condicion implements Serializable{
 	
 	@Basic
-	@Column(name = "EDADMAXIMA")	
+	@Column(name = "edadMaxima")	
 	@Property int edadMaxima
 	
 	@Basic
-	@Column(name = "EDADMINIMA")
+	@Column(name = "edadMinima")
 	@Property int edadMinima
 
 	override puedeInscribirse(Partido partido) {
