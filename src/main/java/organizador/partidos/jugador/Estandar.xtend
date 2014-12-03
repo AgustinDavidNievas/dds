@@ -11,10 +11,6 @@ import javax.persistence.JoinColumn
 @Entity
 @DiscriminatorValue("E")
 class Estandar extends Tipo implements Serializable{
-	
-	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="tipo")
-	@JoinColumn(name="jugador2")
-	@Property Jugador jugador2
 		
 	int prioridad = 1
 	
