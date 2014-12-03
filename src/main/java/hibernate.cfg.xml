@@ -3,14 +3,18 @@
 "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>
 		<property name="hibernate.connection.url">jdbc:hsqldb:file:ddsBD</property>
-   		<property name="hibernate.connection.username">sa</property>
-        <property name="hibernate.connection.password"></property>
+		<!-- <property name="hibernate.connection.url">jdbc:hsqldb:mem:Partido</property> 
+			esto es solo para probar, la posta es usar el archivo -->
+		<property name="hibernate.connection.username">sa</property>
+		<property name="hibernate.connection.password"></property>
 
-        <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="show_sql">true</property>
-    </session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="show_sql">true</property>
+		<!-- Googleando encontre que esto es para poder ver las consultas que hibernate hace -->
+		<property name="use_sql_comments">true</property>
+	</session-factory>
 </hibernate-configuration>
