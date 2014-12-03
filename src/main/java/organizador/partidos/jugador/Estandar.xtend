@@ -22,7 +22,9 @@ class Estandar extends Tipo implements Serializable{
 	override def dameTuPrioridad() {
 		this.prioridad
 	}
-
+	
+	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="tipo")
+	@JoinColumn(name="jugador")
 	var Jugador jugador
 
 	override setJugador(Jugador jugador) {
